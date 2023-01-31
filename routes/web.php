@@ -21,3 +21,7 @@ Route::get('fecha',function(){
     return date("d/m/y h:i:s");
 }
 );
+
+Route::get('libros', 'LibroController@index');
+
+Route::get('libros/{id}', 'LibroController@show');
