@@ -23,7 +23,7 @@ class LibroController extends Controller
             array("titulo" => "El Señor de los Anillos",
             "autor" => "J.R.R. Tolkien")
             );
-            return view('listado', compact('libros'));
+            return "hola";
     }
 
     /**
