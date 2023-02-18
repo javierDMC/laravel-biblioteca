@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Libro;
 use Illuminate\Http\Request;
 
 class LibroController extends Controller
@@ -9,16 +10,17 @@ class LibroController extends Controller
 
     public function index()
     {
-        $libros = array(
-            array("titulo" => "El juego de Ender",
-            "autor" => "Orson Scott Card"),
-            array("titulo" => "La tabla de Flandes",
-            "autor" => "Arturo Pérez Reverte"),
-            array("titulo" => "La historia interminable",
-            "autor" => "Michael Ende"),
-            array("titulo" => "El Señor de los Anillos",
-            "autor" => "J.R.R. Tolkien")
-            );
+        $libros = Libro::get();
+        // $libros = array(
+        //     array("titulo" => "El juego de Ender",
+        //     "autor" => "Orson Scott Card"),
+        //     array("titulo" => "La tabla de Flandes",
+        //     "autor" => "Arturo Pérez Reverte"),
+        //     array("titulo" => "La historia interminable",
+        //     "autor" => "Michael Ende"),
+        //     array("titulo" => "El Señor de los Anillos",
+        //     "autor" => "J.R.R. Tolkien")
+        //     );
             return response()->json($libros, 200);
     }
 
@@ -29,18 +31,13 @@ class LibroController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        return response()->json($request, 201)
+        ->header('Cabecera1', 'Valor1');
     }
 
     /**
@@ -51,7 +48,8 @@ class LibroController extends Controller
      */
     public function show($id)
     {
-        echo("Mostrando ficha de libro $id");
+        $libro = Libro::findOrFail($id);
+        return $libro;
     }
 
     /**
