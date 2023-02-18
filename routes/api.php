@@ -19,8 +19,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/libros', [LibroController::class, 'index']);
+// Route::get('',function () { return response()->json('Bienvenido', 200);});
 
-// Route::get('libros/{id}', 'LibroController@show');
+Route::apiResource('libros', LibroController::class);
+// Route::get('libros', [LibroController::class, 'index']);
+
+// Route::get('/libros/{id}', [LibroController::class, 'show']);
 
 // Route::resource('libros', 'LibroController');

@@ -6,11 +6,7 @@ use Illuminate\Http\Request;
 
 class LibroController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $libros = array(
@@ -23,7 +19,7 @@ class LibroController extends Controller
             array("titulo" => "El Señor de los Anillos",
             "autor" => "J.R.R. Tolkien")
             );
-            return $libros;
+            return response()->json($libros, 200);
     }
 
     /**
